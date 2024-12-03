@@ -1,11 +1,12 @@
 import { serve } from "https://deno.land/std/http/server.ts";
-
+import { cheerio } from "https://deno.land/x/cheerio@1.0.7/mod.ts";
 function error(code: number): Promise<Response> {
   const response = new Response(null, {
     status: code,
   });
   return Promise.resolve(response);
 }
+
 
 function options(): Promise<Response> {
   const headers = {
@@ -215,8 +216,9 @@ async function handler(request: Request): Promise<Response> {
     }
   }
  // log(request, response);
-  console.log( await response.text() )
-  return response;
+  htm = await response.text() 
+  const $ = cheerio.load( htm )
+  return $.html()
 }
 
 serve(handler);
