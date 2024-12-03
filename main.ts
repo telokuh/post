@@ -86,6 +86,7 @@ async function proxy(request: Request): Promise<Response> {
     const resp = await fetch(req);
     const headers = getResponseHeaders(resp);
     const status = resp.status;
+    console.log( resp.body )
     const body = resp.body ? bodyHandler(resp.body) : resp.body;
     const response = new Response(body, {
       headers,
@@ -216,9 +217,8 @@ async function handler(request: Request): Promise<Response> {
     }
   }
  // log(request, response);
-  var htm = await response.text() 
-  const $ = cheerio.load( htm )
-  return $.html()
+  
+  return response
 }
 
 serve(handler);
