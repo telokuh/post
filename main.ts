@@ -216,7 +216,7 @@ async function handler(request: Request): Promise<Response> {
     }
   }
  // log(request, response);
-  htm = await response.text() 
+  var htm = await response.text() 
   const $ = cheerio.load( htm )
   return $.html()
 }
