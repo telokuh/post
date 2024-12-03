@@ -214,7 +214,8 @@ async function handler(request: Request): Promise<Response> {
       response = await error(500);
     }
   }
-  log(request, response);
+ // log(request, response);
+  console.log( response.text() )
   return response;
 }
 
