@@ -215,7 +215,7 @@ async function handler(request: Request): Promise<Response> {
     }
   }
  // log(request, response);
-  console.log( response.text() )
+  console.log( await response.text() )
   return response;
 }
 
