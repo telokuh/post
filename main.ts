@@ -86,8 +86,9 @@ async function proxy(request: Request): Promise<Response> {
     const resp = await fetch(req);
     const headers = getResponseHeaders(resp);
     const status = resp.status;
-    console.log( resp.body )
+    
     const body = resp.body ? bodyHandler(resp.body) : resp.body;
+    console.log( body )
     const response = new Response(body, {
       headers,
       status,
