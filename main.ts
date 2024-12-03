@@ -88,7 +88,7 @@ async function proxy(request: Request): Promise<Response> {
     const status = resp.status;
     
     const body = resp.body ? bodyHandler(resp.body) : resp.body;
-    console.log( body )
+    
     const response = new Response(body, {
       headers,
       status,
@@ -152,6 +152,7 @@ async function proxy(request: Request): Promise<Response> {
           aborter(reason);
         },
       });
+      console.log( stream )
       return stream;
     }
   }
